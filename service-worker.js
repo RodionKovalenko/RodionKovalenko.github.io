@@ -1375,9 +1375,7 @@
              */
             this._okay = true;
             // The hashTable within the manifest is an Object - convert it to a Map for easier lookups.
-            Object.keys(this.manifest.hashTable).forEach(url => {
-                this.hashTable.set(url, this.manifest.hashTable[url]);
-            });
+           
             // Process each `AssetGroup` declared in the manifest. Each declared group gets an `AssetGroup`
             // instance
             // created for it, of a type that depends on the configuration mode.
@@ -2241,14 +2239,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
                 // can have its internals hydrated from the state.
                 // Initialize the `versions` map by setting each hash to a new `AppVersion` instance
                 // for that manifest.
-                Object.keys(manifests).forEach((hash) => {
-                    const manifest = manifests[hash];
-                    // If the manifest is newly initialized, an AppVersion may have already been
-                    // created for it.
-                    if (!this.versions.has(hash)) {
-                        this.versions.set(hash, new AppVersion(this.scope, this.adapter, this.db, this.idle, this.debugger, manifest, hash));
-                    }
-                });
+                
                 // Map each client ID to its associated hash. Along the way, verify that the hash
                 // is still valid for that client ID. It should not be possible for a client to
                 // still be associated with a hash that was since removed from the state.
