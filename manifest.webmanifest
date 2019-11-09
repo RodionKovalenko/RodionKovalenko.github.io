@@ -1,6 +1,6 @@
 {
-  "name": "ng-service-worker",
-  "short_name": "ng-service-worker",
+  "name": "pwa-app",
+  "short_name": "pwa-app",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
