@@ -2158,7 +2158,11 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
                 try {
                     // Handle the request. First try the AppVersion. If that doesn't work, fall back on the
                     // network.
-                    res = yield appVersion.handleFetch(event.request, event);
+					res = null; 
+					
+					if (appVersion) {
+						res = yield appVersion.handleFetch(event.request, event);
+					}
                 }
                 catch (err) {
                     if (err.isCritical) {
