@@ -1,7 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1573294337957,
-  "appData": "",
+  "timestamp": 1573326868419,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -20,7 +19,7 @@
     },
     {
       "name": "assets",
-      "installMode": "prefetch",
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
         "/assets/icons/icon-128x128.png",
@@ -33,24 +32,10 @@
         "/assets/icons/icon-96x96.png",
         "/assets/images/rocket-default.png"
       ],
-      "patterns": [
-        "https:\\/\\/fonts\\.googleapis\\.com\\/.*",
-        "https:\\/\\/fonts\\.gstatic\\.com\\/.*"
-      ]
+      "patterns": []
     }
   ],
-  "dataGroups": [
-    {
-      "name": "spacex-api",
-      "patterns": [
-        "\\/(?:.+\\/)?\\/api\\.spacexdata\\.com\\/.*"
-      ],
-      "strategy": "performance",
-      "maxSize": "1",
-      "maxAge": 604800000,
-      "version": 1
-    }
-  ],
+  "dataGroups": [],
   "hashTable": {
     "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
