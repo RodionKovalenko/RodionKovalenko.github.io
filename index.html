@@ -1,38 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="de">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; block-all-mixed-content; img-src 'self' 'unsafe-inline' 'self' data:; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; script-src 'self' 'unsafe-eval' 'sha256-g9/W0u10CivCk35GrYFgWYYivhrwQKs0uwU3yzFLzzg=' 'sha256-L/lxRkZfslsKB+3be5Xb/QjEzH4AgR/H5bhUaX1rUX8='">
-
-    <title>KiTaPLUS Tablet-App</title>
-
-    <script type="text/javascript" src="resources/js/node_modules/text-encoding/lib/encoding.js"></script>
-    <script type="text/javascript" src="resources/js/node_modules/lovefield/dist/lovefield.min.js"></script>
-    <script type="text/javascript" src="resources/js/node_modules/bcryptjs/dist/bcrypt.min.js"></script>
-    <script type="text/javascript" src="resources/js/dropzone.js"></script>
-    <script type="text/javascript" src="resources/js/node_modules/croppie/croppie.min.js"></script>
-    <link rel="stylesheet" href="resources/js/node_modules/croppie/croppie.css"/>
-    <script type="text/javascript">
-        var Ext = Ext || {}; // Ext namespace definieren
-        Ext.manifest = 'app';
-        // NpoaApp initial mit globalen Default-Werten setzen
-        // Muss bereits vor Appliaction::init() passieren, da sonst z.B. die Proxies nicht auf die baseUrl zugreifen koennen
-        var NpoaApp = {
-            baseUrl: location.protocol + '//' + location.host,
-            scrollTo: 0,
-            syncDetails: '',
-            config: {
-                filterDate: new Date()
-            }
-        };
-
-    </script>
-
-    <!-- The line below must be kept intact for Sencha Cmd to build your application -->
-    <link rel="manifest" href="progressive-manifest.json"/><script  id="microloader" data-app="b1538384-f829-41bb-ba16-4055b1927a15" src="microloader.js"></script>
-
-</head>
-<body></body>
+  <meta charset="utf-8">
+  <title>PwaApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">   
+<link rel="stylesheet" href="styles.3ff695c00d717f2d2a11.css"></head>
+<body>
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+<script src="runtime-es2015.edb2fcf2778e7bf1d426.js" type="module"></script><script src="runtime-es5.edb2fcf2778e7bf1d426.js" nomodule defer></script><script src="polyfills-es5.ef4b1e1fc703b3ff76e3.js" nomodule defer></script><script src="polyfills-es2015.2987770fde9daa1d8a2e.js" type="module"></script><script src="main-es2015.fd0bdbccd91928beddfc.js" type="module"></script><script src="main-es5.fd0bdbccd91928beddfc.js" nomodule defer></script></body>
 </html>
