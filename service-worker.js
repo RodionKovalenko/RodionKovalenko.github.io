@@ -2375,7 +2375,8 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
                     // associated with that version on the next request.
                     // First validate the current state.
                     if (this.latestHash === null) {
-                        throw new Error(`Invariant violated (assignVersion): latestHash was null`);
+						return; 
+                       // throw new Error(`Invariant violated (assignVersion): latestHash was null`);
                     }
                     // Return the latest `AppVersion`.
                     return this.lookupVersionByHash(this.latestHash, 'assignVersion');
