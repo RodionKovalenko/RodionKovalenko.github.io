@@ -1375,9 +1375,15 @@
              */
             this._okay = true;
             // The hashTable within the manifest is an Object - convert it to a Map for easier lookups.
-            Object.keys(this.manifest.hashTable).forEach(url => {
+			
+			if (!this.manifest && !this.manifest.hashTable) {
+				 this.hashTable.set('/', this.manifest.hashTable['']);
+			} else {
+				Object.keys(this.manifest.hashTable).forEach(url => {
                 this.hashTable.set(url, this.manifest.hashTable[url]);
-            });
+				});
+			}
+			
             // Process each `AssetGroup` declared in the manifest. Each declared group gets an `AssetGroup`
             // instance
             // created for it, of a type that depends on the configuration mode.
