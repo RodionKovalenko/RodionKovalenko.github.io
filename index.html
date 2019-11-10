@@ -29,6 +29,16 @@
             }
         };
 
+
+        if('serviceWorker' in navigator){
+            try {
+                navigator.serviceWorker.register('/serviceWorker.js');
+                console.log("Service Worker Registered");
+            } catch (error) {
+                console.log("Service Worker Registration Failed");
+            }
+        }
+
     </script>
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->
     <script  id="microloader" data-app="b1538384-f829-41bb-ba16-4055b1927a15" src="microloader.js"></script>
