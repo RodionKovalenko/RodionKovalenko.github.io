@@ -2266,7 +2266,8 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
                 this.latestHash = latest.latest;
                 // Finally, assert that the latest version is in fact loaded.
                 if (!this.versions.has(latest.latest)) {
-                    throw new Error(`Invariant violated (initialize): latest hash ${latest.latest} has no known manifest`);
+                    //throw new Error(`Invariant violated (initialize): latest hash ${latest.latest} has no known manifest`);
+					break; 
                 }
                 // Finally, wait for the scheduling of initialization of all versions in the
                 // manifest. Ordinarily this just schedules the initializations to happen during
