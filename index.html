@@ -14,8 +14,7 @@
     <script type="text/javascript" src="resources/js/dropzone.js"></script>
     <script type="text/javascript" src="resources/js/node_modules/croppie/croppie.min.js"></script>
     <link rel="stylesheet" href="resources/js/node_modules/croppie/croppie.css"/>
-    <link rel="manifest" href="manifest.webmanifest">
-     <script type="text/javascript">
+    <script type="text/javascript">
         var Ext = Ext || {}; // Ext namespace definieren
         Ext.manifest = 'app';
         // NpoaApp initial mit globalen Default-Werten setzen
@@ -30,8 +29,10 @@
         };
 
     </script>
+
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->
-    <script  id="microloader" data-app="b1538384-f829-41bb-ba16-4055b1927a15" src="microloader.js"></script>
+    <link rel="manifest" href="progressive-manifest.json"/><script  id="microloader" data-app="b1538384-f829-41bb-ba16-4055b1927a15" src="microloader.js"></script>
+
 </head>
 <body></body>
 </html>
