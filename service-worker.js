@@ -1375,15 +1375,9 @@
              */
             this._okay = true;
             // The hashTable within the manifest is an Object - convert it to a Map for easier lookups.
-			
-			if (!this.manifest && !this.manifest.hashTable) {
-				 this.hashTable.set('/', this.manifest.hashTable['']);
-			} else {
-				Object.keys(this.manifest.hashTable).forEach(url => {
+            Object.keys(this.manifest.hashTable).forEach(url => {
                 this.hashTable.set(url, this.manifest.hashTable[url]);
-				});
-			}
-			
+            });
             // Process each `AssetGroup` declared in the manifest. Each declared group gets an `AssetGroup`
             // instance
             // created for it, of a type that depends on the configuration mode.
@@ -2272,8 +2266,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
                 this.latestHash = latest.latest;
                 // Finally, assert that the latest version is in fact loaded.
                 if (!this.versions.has(latest.latest)) {
-                    //throw new Error(`Invariant violated (initialize): latest hash ${latest.latest} has no known manifest`);
-					return; 
+                    throw new Error(`Invariant violated (initialize): latest hash ${latest.latest} has no known manifest`);
                 }
                 // Finally, wait for the scheduling of initialization of all versions in the
                 // manifest. Ordinarily this just schedules the initializations to happen during
@@ -2378,7 +2371,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
                     // associated with that version on the next request.
                     // First validate the current state.
                     if (this.latestHash === null) {
-                       // throw new Error(`Invariant violated (assignVersion): latestHash was null`);
+                        throw new Error(`Invariant violated (assignVersion): latestHash was null`);
                     }
                     // Return the latest `AppVersion`.
                     return this.lookupVersionByHash(this.latestHash, 'assignVersion');
