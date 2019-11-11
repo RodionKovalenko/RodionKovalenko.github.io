@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 52 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g id="Ebene_2-2">
-        <path d="M0,15L0,45L25.98,60L51.96,45L51.96,15L25.98,0L0,15Z" style="fill:rgb(3,124,141);fill-rule:nonzero;"/>
-        <path d="M32,15L14,15C12.354,15 11,16.354 11,18L11,42C11,43.646 12.354,45 14,45L38,45C39.646,45 41,43.646 41,42L41,24L32,15ZM26,18L26,22.5L20,22.5L20,18L26,18ZM32,42L20,42L20,33L32,33L32,42ZM38,42L35,42L35,31.5C35,30.677 34.323,30 33.5,30L18.5,30C17.679,30.005 17.005,30.679 17,31.5L17,42L14,42L14,18L17,18L17,24C17.005,24.821 17.679,25.495 18.5,25.5L27.5,25.5C28.323,25.5 29,24.823 29,24L29,18L30.76,18L38,25.24L38,42Z" style="fill:white;fill-rule:nonzero;"/>
-    </g>
-</svg>
