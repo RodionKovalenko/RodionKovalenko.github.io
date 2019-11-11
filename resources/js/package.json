@@ -1,0 +1,11 @@
+{
+  "name": "NpoaApp",
+  "version": "1.0.0",
+  "description": "Node-Packages für die TApp",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "croppie": "^2.6.4",
+    "lovefield": "^2.1.12",
+    "text-encoding": "^0.7.0"
+  }
+}
