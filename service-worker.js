@@ -1798,7 +1798,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
      */
     var __awaiter$5 = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { if (value) { step(generator.next(value)); } } catch (e) { reject(e); } }
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
             function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
             step((generator = generator.apply(thisArg, _arguments || [])).next());
@@ -2266,8 +2266,7 @@ ${msgIdle}`, { headers: this.adapter.newHeaders({ 'Content-Type': 'text/plain' }
                 this.latestHash = latest.latest;
                 // Finally, assert that the latest version is in fact loaded.
                 if (!this.versions.has(latest.latest)) {
-                    //throw new Error(`Invariant violated (initialize): latest hash ${latest.latest} has no known manifest`);
-					return; 
+                    throw new Error(`Invariant violated (initialize): latest hash ${latest.latest} has no known manifest`);
                 }
                 // Finally, wait for the scheduling of initialization of all versions in the
                 // manifest. Ordinarily this just schedules the initializations to happen during
