@@ -1,38 +1,18 @@
-<!DOCTYPE HTML>
-<html lang="de">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; block-all-mixed-content; img-src 'self' 'unsafe-inline' 'self' data:; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; script-src 'self' 'unsafe-eval' 'sha256-g9/W0u10CivCk35GrYFgWYYivhrwQKs0uwU3yzFLzzg=' 'sha256-L/lxRkZfslsKB+3be5Xb/QjEzH4AgR/H5bhUaX1rUX8='">
-
-    <title>KiTaPLUS Tablet-App</title>
-
-    <script type="text/javascript" src="resources/js/node_modules/text-encoding/lib/encoding.js"></script>
-    <script type="text/javascript" src="resources/js/node_modules/lovefield/dist/lovefield.min.js"></script>
-    <script type="text/javascript" src="resources/js/node_modules/bcryptjs/dist/bcrypt.min.js"></script>
-    <script type="text/javascript" src="resources/js/dropzone.js"></script>
-    <script type="text/javascript" src="resources/js/node_modules/croppie/croppie.min.js"></script>
-    <link rel="stylesheet" href="resources/js/node_modules/croppie/croppie.css"/>
-    <script type="text/javascript">
-        var Ext = Ext || {}; // Ext namespace definieren
-        Ext.manifest = 'app';
-        // NpoaApp initial mit globalen Default-Werten setzen
-        // Muss bereits vor Appliaction::init() passieren, da sonst z.B. die Proxies nicht auf die baseUrl zugreifen koennen
-        var NpoaApp = {
-            baseUrl: location.protocol + '//' + location.host,
-            scrollTo: 0,
-            syncDetails: '',
-            config: {
-                filterDate: new Date()
-            }
-        };
-
-    </script>
-
-    <!-- The line below must be kept intact for Sencha Cmd to build your application -->
-    <link rel="manifest" href="progressive-manifest.json"/><script  id="microloader" data-app="b1538384-f829-41bb-ba16-4055b1927a15" src="microloader.js"></script>
-
+  <meta charset="utf-8">
+  <title>TimerApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
 </head>
-<body></body>
+<body>
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+<script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="vendor-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script></body>
 </html>
