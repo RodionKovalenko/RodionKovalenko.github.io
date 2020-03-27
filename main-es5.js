@@ -851,7 +851,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var environment = {
-      production: true
+      production: false
     };
     /*
      * For easier debugging in development mode, you can import the following file
