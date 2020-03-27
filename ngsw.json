@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1585324105343,
+  "timestamp": 1585325268249,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main-es2015.cddd67baf3fe8db82306.js",
-        "/main-es5.cddd67baf3fe8db82306.js",
+        "/main-es2015.c46d92d573df134e0415.js",
+        "/main-es5.c46d92d573df134e0415.js",
         "/manifest.webmanifest",
         "/polyfills-es2015.1a358a9412aaaa57ed9a.js",
         "/polyfills-es5.600c83555fe95e2ea375.js",
@@ -34,6 +34,7 @@
         "/assets/icons/icon-512x512.png",
         "/assets/icons/icon-72x72.png",
         "/assets/icons/icon-96x96.png",
+        "/assets/image-recognition-timer-worker.js",
         "/assets/mp3/test.mp3",
         "/assets/timer-worker.js"
       ],
@@ -50,12 +51,13 @@
     "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/image-recognition-timer-worker.js": "5027dea75ac917c9aed98de17026a4767856d492",
     "/assets/mp3/test.mp3": "43cbdda6373c6d1b9789063614cf085fe28dfd2f",
     "/assets/timer-worker.js": "9b3ed1b008d0e3420bb57dc869ade624209dbe0e",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "54d862d9eadcf653818b0a4a15052fd8278789eb",
-    "/main-es2015.cddd67baf3fe8db82306.js": "f8bff721960da20703a317e0da2197b5032e6452",
-    "/main-es5.cddd67baf3fe8db82306.js": "4644da9465b32d59ad14955022cd772ad93bae70",
+    "/index.html": "f19dd74b019c2dba7380a803ab0580990e4c73c8",
+    "/main-es2015.c46d92d573df134e0415.js": "f24f2c442a9775055f093c646ab5c58bb28a3aff",
+    "/main-es5.c46d92d573df134e0415.js": "3f7feeb01d510916414a7bec43d0e2d076611654",
     "/manifest.webmanifest": "c7d34914ef832a7fdd5b7205f02622c55711e40e",
     "/polyfills-es2015.1a358a9412aaaa57ed9a.js": "9b0821549747e05889d161d586b63e69ef8282bb",
     "/polyfills-es5.600c83555fe95e2ea375.js": "59e01017148141fe450f73159b90c3f71c8e645c",
