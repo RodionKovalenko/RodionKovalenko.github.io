@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kerstvragen</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>
+  :root {
+    --bg: #f7f1e8; --card: #fffdf9; --ink: #2b2420; --muted: #7a6e66;
+    --accent: #a8322d; --accent-ink: #fff; --line: #e6dccf; --green: #2f5d46;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1b1715; --card: #26201d; --ink: #f3ebe2; --muted: #a99d93;
+      --accent: #d0544d; --accent-ink: #fff; --line: #3a322d; --green: #6fae8c; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 16px; min-height: 100dvh;
+  }
+  header { width: 100%; max-width: 560px; text-align: center; }
+  h1 { font-size: 1.4rem; font-weight: normal; margin: 8px 0 12px; letter-spacing: .02em; }
+  .rounds { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+  .rounds button {
+    font: 14px system-ui, sans-serif; border: 1px solid var(--line); background: transparent;
+    color: var(--muted); padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  }
+  .rounds button[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; }
+  main { flex: 1; width: 100%; max-width: 560px; display: flex; flex-direction: column; justify-content: center; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 32px 26px; min-height: 300px; display: flex; flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06); touch-action: pan-y; user-select: none;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .card.out { opacity: 0; transform: translateY(10px) scale(.98); }
+  .meta { font: 13px system-ui, sans-serif; color: var(--muted); display: flex; justify-content: space-between; }
+  .num { color: var(--accent); font-weight: 600; }
+  .q { flex: 1; display: flex; align-items: center; font-size: clamp(1.35rem, 5vw, 1.8rem); line-height: 1.35; margin: 20px 0; }
+  .turn { font: 14px system-ui, sans-serif; color: var(--muted); text-align: center; }
+  .turn b { color: var(--ink); }
+  .progress { height: 4px; background: var(--line); border-radius: 4px; margin: 14px 0 0; overflow: hidden; }
+  .progress > div { height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+  .controls { display: flex; gap: 10px; margin-top: 16px; }
+  .controls button {
+    font: 15px system-ui, sans-serif; padding: 14px 10px; border-radius: 12px; cursor: pointer;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink); flex: 1;
+  }
+  .controls .primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); flex: 2; }
+  .controls button:disabled { opacity: .4; cursor: default; }
+  .sub { display: flex; justify-content: space-between; margin-top: 12px; font: 13px system-ui, sans-serif; }
+  .sub label, .sub button { color: var(--muted); background: none; border: 0; font: inherit; cursor: pointer; display: flex; gap: 6px; align-items: center; }
+  .done { text-align: center; }
+  .done .q { justify-content: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>36 kerstvragen</h1>
+  <div class="rounds" role="group" aria-label="Ronde">
+    <button data-round="0">Alle</button>
+    <button data-round="1">1 · herinneringen</button>
+    <button data-round="2">2 · wij nu</button>
+    <button data-round="3">3 · vooruit kijken</button>
+  </div>
+</header>
+
+<main>
+  <div class="card" id="card">
+    <div class="meta"><span>Vraag <span class="num" id="num"></span></span><span id="roundName"></span></div>
+    <div class="q" id="question"></div>
+    <div class="turn" id="turn"></div>
+    <div class="progress"><div id="bar"></div></div>
+  </div>
+
+  <div class="controls">
+    <button id="prev" aria-label="Vorige vraag">← Vorige</button>
+    <button id="next" class="primary">Volgende →</button>
+  </div>
+  <div class="sub">
+    <label><input type="checkbox" id="shuffle"> Kaartjes schudden</label>
+    <button id="restart">Opnieuw beginnen</button>
+  </div>
+</main>
+
+<script>
+const ROUNDS = ["", "herinneringen", "wij nu", "vooruit kijken"];
+const Q = [
+  "Wat is je mooiste kersterinnering uit je kindertijd?",
+  "Geloofde je in de kerstman of Sinterklaas? Hoe kwam je erachter?",
+  "Welk cadeau is je altijd bijgebleven, en waarom?",
+  "Hoe vierde je familie kerst? Wat aten jullie, wie was erbij?",
+  "Welk kerstgerecht of welke geur doet je meteen aan thuis denken?",
+  "Welk kerstliedje of welke kerstfilm hoort voor jou bij kerst?",
+  "Was er een kerst die echt misging? Wat gebeurde er?",
+  "Wie in je familie maakte kerst bijzonder?",
+  "Welke traditie mis je die er nu niet meer is?",
+  "Hoe was kerst in de jaren dat je alleen was?",
+  "Wat is het mooiste cadeau dat je ooit aan iemand anders hebt gegeven?",
+  "Welke kerst zou je nog één keer willen overdoen?",
+  "Wat betekent kerst eigenlijk voor jou: familie, rust, geloof, eten?",
+  "Ben je eerder een kerstmens of een oud-en-nieuwmens?",
+  "Welke traditie van jou zou je met mij willen delen?",
+  "Wat zou jij nooit willen missen met kerst, en wat mag weg?",
+  "Wat was je eerste indruk van mij, en wat is daarvan veranderd?",
+  "Op welk moment sinds september dacht je: dit is echt?",
+  "Wat is het mooiste “cadeau” dat je dit jaar van mij kreeg, iets wat geen ding is?",
+  "Wat waardeer je aan mij wat je nog nooit hardop hebt gezegd?",
+  "Waar was je dit jaar het meest dankbaar voor?",
+  "Wat was dit jaar moeilijk voor je?",
+  "Wat heb je dit jaar over jezelf geleerd?",
+  "Wanneer voel je je het meest thuis bij mij?",
+  "Hoe ziet jouw ideale kerst eruit over vijf jaar? Waar zijn we, wie zit er aan tafel?",
+  "Welke nieuwe traditie zouden wij samen kunnen beginnen?",
+  "Kerst in Amersfoort, in Essen, of ergens heel anders?",
+  "Hoe zouden we kerst met beide families kunnen combineren?",
+  "Wat wil je volgend jaar samen meemaken?",
+  "Welke droom wil je in de komende jaren waarmaken?",
+  "Wat wil je in het nieuwe jaar anders doen dan dit jaar?",
+  "Wat hoop je dat wij over tien jaar nog steeds doen?",
+  "Wat wil je dat ik van jou weet, wat ik misschien nog niet weet?",
+  "Wat wens je mij voor het nieuwe jaar?",
+  "Wat wil je mij nog zeggen voordat het jaar voorbij is?",
+  "Kijk elkaar een minuut aan zonder te praten en zeg daarna één ding dat je voelde."
+].map((text, i) => ({ id: i + 1, round: Math.floor(i / 12) + 1, text }));
+
+const $ = id => document.getElementById(id);
+const KEY = "kerstvragen-state";
+let state = { round: 0, shuffle: false, order: [], pos: 0 };
+
+function load() { try { Object.assign(state, JSON.parse(localStorage.getItem(KEY)) || {}); } catch (e) {} }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+function buildOrder() {
+  let ids = Q.filter(q => !state.round || q.round === state.round).map(q => q.id);
+  if (state.shuffle) for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); [ids[i], ids[j]] = [ids[j], ids[i]];
+  }
+  state.order = ids; state.pos = 0;
+}
+
+function render(animate = true) {
+  const card = $("card");
+  const paint = () => {
+    const total = state.order.length, done = state.pos >= total;
+    card.classList.toggle("done", done);
+    if (done) {
+      $("num").textContent = "";
+      $("roundName").textContent = "";
+      $("question").textContent = "Alle kaartjes zijn getrokken. Fijne kerst! 🎄";
+      $("turn").textContent = "";
+    } else {
+      const q = Q[state.order[state.pos] - 1];
+      $("num").textContent = q.id;
+      $("roundName").textContent = "Ronde " + q.round + ": " + ROUNDS[q.round];
+      $("question").textContent = q.text;
+      $("turn").innerHTML = "Kaartje " + (state.pos + 1) + " van " + total +
+        " · <b>" + (state.pos % 2 === 0 ? "Jij" : "De ander") + "</b> trekt";
+    }
+    $("bar").style.width = (Math.min(state.pos + (done ? 0 : 1), total) / total * 100) + "%";
+    $("prev").disabled = state.pos === 0;
+    $("next").textContent = done ? "Opnieuw ↺" : (state.pos === total - 1 ? "Afronden ✓" : "Volgende →");
+    document.querySelectorAll(".rounds button").forEach(b =>
+      b.setAttribute("aria-pressed", String(+b.dataset.round === state.round)));
+    $("shuffle").checked = state.shuffle;
+    card.classList.remove("out");
+    save();
+  };
+  if (animate) { card.classList.add("out"); setTimeout(paint, 180); } else paint();
+}
+
+function next() {
+  if (state.pos >= state.order.length) { buildOrder(); } else state.pos++;
+  render();
+}
+function prev() { if (state.pos > 0) { state.pos--; render(); } }
+
+$("next").onclick = next;
+$("prev").onclick = prev;
+$("restart").onclick = () => { buildOrder(); render(); };
+$("shuffle").onchange = e => { state.shuffle = e.target.checked; buildOrder(); render(); };
+document.querySelectorAll(".rounds button").forEach(b =>
+  b.onclick = () => { state.round = +b.dataset.round; buildOrder(); render(); });
+
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight" || e.key === " " || e.key === "Enter") { e.preventDefault(); next(); }
+  if (e.key === "ArrowLeft") prev();
+});
+let sx = null;
+$("card").addEventListener("touchstart", e => sx = e.touches[0].clientX, { passive: true });
+$("card").addEventListener("touchend", e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx; sx = null;
+  if (dx < -50) next(); else if (dx > 50) prev();
+});
+
+load();
+if (!Array.isArray(state.order) || !state.order.length || state.order.some(id => !Q[id - 1])) buildOrder();
+render(false);
+</script>
+</body>
+</html>
